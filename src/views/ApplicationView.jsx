@@ -3,6 +3,9 @@ import { AllPosts } from "../components/posts/AllPosts"
 import { NavBar } from "../components/navBar/NavBar"
 import { useEffect, useState } from "react"
 import { PostDetails } from "../components/posts/PostDetails"
+import { NewPost } from "../components/posts/NewPost"
+import { MyPost } from "../components/posts/MyPost"
+// import { News } from "../components/posts/NewS"
 
 export const ApplicationView=()=>{
     const [currentUser, setCurrentUser] = useState({})
@@ -24,12 +27,15 @@ export const ApplicationView=()=>{
                 }> 
                 <Route path="/">
                     <Route index element={<AllPosts/>}/>
-                </Route>   
+                </Route> 
+
                 <Route path="posts">
                     <Route index element={<AllPosts/>}/>
-                    <Route path=":postId" element={<PostDetails currentUser={currentUser}/>}>   
-                </Route>       
-                </Route>
+                    <Route path=":postId" element={<PostDetails currentUser={currentUser}/>}/>                    
+                </Route> 
+
+                <Route path="newpost" element={<NewPost currentUser={currentUser} />} />  
+                <Route path="myPost" element={<MyPost/>} /> 
             </Route>            
         </Routes>
         </>
